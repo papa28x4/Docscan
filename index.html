@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Explore my Dokuscan App, a feature-rich word counter. Get statistics, search for words and replace them">
+    <meta name="description" content="Explore my Docscan App, an advance word counter with find and replace capabilities">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -20,9 +20,7 @@
             <input type="file" class="btn btn-secondary" id="fileupload">
 	
 			<p id="status_bar"><span id="left"></span><span id="right"></span></p>
-			<div id="clipboard" contenteditable="true">These words over the years have shaped my attitude towards learning a new skill. They are no shortcuts to becoming good. Programming, as is the case with learning any human language, sufficient exposure is required. Speaking, reading, listening and writing. My programming journey began with a book recommended by Andy stockhwiz, a youtuber I follow. Head-first Javascript programming.
-				
-			</div>
+			<div id="clipboard" contenteditable="true" placeholder="TYPE, COPY & PASTE, DRAG & DROP or BROWSE FOR A FILE (.txt only)"></div>
 		
 		</div>
 		
@@ -77,12 +75,7 @@
         	<tbody></tbody>
       	</table>
         <table class="simple_analysis">
-        	<!-- <thead>
-        		<tr>
-        			<th>Property</th>
-        			<th>Amount</th>
-        		</tr>
-        	</thead> -->
+        	
         	<tbody>
         		<tr>
         			<td>Word (Count)</td>
@@ -129,6 +122,8 @@
 </div>
 
 <!-- End of Modal -->
+
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 

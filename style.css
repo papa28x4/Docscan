@@ -56,6 +56,11 @@ div.controls{
 	border: 1px solid #007bff ;
 }
 
+.text_area #clipboard[placeholder]:empty::before {
+    content: attr(placeholder);
+    color: #555; 
+}
+
 .hl{
 	border: 1px solid red; 
 	border-radius:3px;

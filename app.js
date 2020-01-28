@@ -101,7 +101,10 @@ let map;
 		function characterCount(){
 
 			let length = clipboard.textContent.length;
-			right.textContent = `${length} characters`;
+			right.textContent =  length === 1? `${length} character` : `${length} characters`;
+			if(length === 0){
+				left.textContent = "";
+			}
 		}
 
 		function groupWords(text){
@@ -110,9 +113,9 @@ let map;
 			let words = text.toUpperCase()
 			words = words.split(/[^\w-]+/)
 			count = 0;
-
+			
 			for(word of words){
-				if(!isNaN(word)){
+				if(!isNaN(word) && word !== ""){
 					word = " " + word;
 				}
 				if(word){
@@ -126,6 +129,7 @@ let map;
 			}
 			return hashMap;
 		}
+
 
 
 		function reorder(obj,type,dir,len){
@@ -188,6 +192,7 @@ let map;
 			}
 			else if(e.target.id === "clipboard"){
 				characterCount()
+
 			}
 
 		})
@@ -233,7 +238,8 @@ let map;
 		body.addEventListener('click', function(e){
 			if(e.target.id === "analyse"){
 				let text = clipboard.textContent;
-				let length = text.trim().length;
+				text = text.trim();
+				let length = text.length;
 				let words = text.split(' ').length;
 				let char_non_space = text.replace(/\s/g, '').length;
 				let char_space = length - char_non_space;
@@ -241,7 +247,7 @@ let map;
 				const see_more = document.querySelector('#see_more') 
 				map = groupWords(text);
 				
-				console.log(length, words, char_non_space, char_space, map)
+				// console.log(length, words, char_non_space, char_space, map)
 				
 				tableBody.parentElement.classList.remove('show');
 				sort.classList.remove('show');
@@ -249,8 +255,6 @@ let map;
 				see_more.textContent = "See More";
 				let mode = reorder(map,'number', 'desc');
 				let longestWord = reorder(map,'number', 'desc', true);
-
-				console.log(mode, longestWord)
 
 				simple_analysis[1].textContent = words;
 				simple_analysis[3].textContent = `${mode[1]} (${mode[2]})`;
@@ -308,15 +312,13 @@ let map;
 		})
 
 /*
-		Todo List
+		
 
-		placeholder for Clipboard
+		Todo List
 
 		refactor analyse code
 
 		using the tab key to navigate
-
-		Bring to focus the highlight search word
 
 		put links to images in my github read me
 
