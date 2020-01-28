@@ -53,7 +53,7 @@ let map;
 				});
 				let length = document.querySelectorAll('.hl').length;
 				if(length > 0){
-					left.textContent = `1 of ${length} matches`;
+					left.textContent = (length === 1)?  `1 of ${length} match` :  `1 of ${length} matches`;
 					// console.log(`1 of ${length} matches`)
 				}else{
 					left.textContent = `unable to find ${value}`;
@@ -110,6 +110,9 @@ let map;
 			count = 0;
 
 			for(word of words){
+				if(!isNaN(word)){
+					word = " " + word;
+				}
 				if(word){
 					if(hashMap[word]){
 						hashMap[word]++;
@@ -302,7 +305,17 @@ let map;
 			}
 		})
 
+/*
+		1 match or 2 matches
 
+		placeholder for contentEditable
+
+		refactor analyse code
+
+		using the tab key to navigate
+
+		put links to images in my github read me
+*/
 
 /* Given a string of words, you need to find the highest scoring word. Each letter of a word scores
 points according to its position in the alphabet: a = 1, b = 2, c = 3 etc. You need to return the
