@@ -1,0 +1,177 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Raleway', sans-serif;
+}
+
+#container{
+	width:90%;
+	max-width: 1000px;
+	margin: 5% auto;
+	border:2px solid #007bff;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 5px;
+}
+
+.text_area{
+	width:100%;
+	height: 50vh;
+	overflow-y: hidden;
+}
+div.controls{
+	display: flex;
+	margin-left: 0; 
+}
+.text_area #status_bar{
+	height: 5vh;
+	font-size: 0.8rem;
+	font-weight: bold;
+	line-height: 4.5vh;
+	margin-bottom: 1.5vh;
+	margin-top: 2.5vh;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid #ced4da;
+	border-radius: 5px;
+}
+.text_area #clipboard{
+		border: 1px solid #ced4da;
+		padding: 10px;
+		width: 100%;
+		height: 36.5vh;
+		border-radius: 5px;
+		overflow-y: auto;
+}
+.text_area #clipboard.active{
+	border: 2px dashed #007bff;
+}
+
+.hl{
+	border: 1px solid red; 
+	border-radius:3px;
+}
+
+.hl:nth-child(1){
+	background: pink;
+}
+
+.hl.inactive-find{
+	background: none;
+}
+
+.h1:nth-child(1).inactive-find.active-find,
+.hl.active-find{
+	background: pink;
+}
+
+
+.search_div, .replace_div{
+	display: flex;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.search_div *,
+.replace_div *{
+	flex: 1;
+	height: 40px;
+	margin-left: 10px;
+}
+
+.search_div #keyword,
+.replace_div #substitute{
+	margin-left: 0;
+}
+
+
+#filters{
+	font-size: 0.82rem;
+}
+
+#clipboard{
+	outline: none;
+}
+#clipboard:focus{
+	border: 1px solid #007bff ;
+}
+.detailed_analysis{
+	display: none;
+}
+.detailed_analysis.show{
+	display: initial;
+}
+
+.modal-body{
+	margin: auto;
+	max-height: 70vh;
+	overflow: auto;
+}
+
+.detailed_analysis.show ~ .simple_analysis{
+	display: none;
+}
+
+
+.simple_analysis tr td:nth-child(1){
+	font-weight: bold;
+	
+}
+
+.simple_analysis td,
+.simple_analysis th,
+.detailed_analysis td,
+.detailed_analysis th{
+	padding: 3px 15px;
+}
+
+.detailed_analysis td:first-child{
+	padding-right: 30px;
+}
+
+.detailed_analysis td:nth-child(2){
+	padding-right: 0px;
+}
+
+.detailed_analysis td:last-child{
+	text-align: center;
+	padding-left: 0px;
+}
+
+#sort{
+	display: none;
+}
+
+#sort.show{
+	display: initial;
+}
+
+
+ @media(max-width: 860px){
+	.box{
+		flex-direction: column;
+	}
+	.controls{
+		margin-top: 10px;
+		justify-content: space-between;
+	}
+	#filters{
+		font-size: 1rem;
+	}
+	.search_div *:first-child, .replace_div *:first-child {
+	    margin-left: 0;
+	}
+	.btn_controls{
+		max-width: 120px;
+	}
+}
+
+@media(max-width:440px){
+	.btn_controls, #filters{
+		font-size: 0.7rem;
+	}
+}

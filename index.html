@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Explore my Dokuscan App, a feature-rich word counter. Get statistics, search for words and replace them">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>Dokuscan App</title>
+</head>
+
+<body id="body">
+	<div id="container" class="bg-neutral">
+		<h1 class="bg-primary text-white text-center mb-3" id=heading>DOCSCAN</h1>
+		<div class="text_area">
+			<input type="file" id="fileupload">
+
+			<p id="status_bar"><span id="left"></span><span id="right"></span></p>
+			<div id="clipboard" contenteditable="true">These words over the years have shaped my attitude towards learning a new skill. They are no shortcuts to becoming good. Programming, as is the case with learning any human language, sufficient exposure is required. Speaking, reading, listening and writing. My programming journey began with a book recommended by Andy stockhwiz, a youtuber I follow. Head-first Javascript programming.
+				
+			</div>
+		
+		</div>
+		
+		<div class="search_div box">
+			<input class="form-control" placeholder="Search for..." type="search" id="keyword">
+			<div class="controls">
+				<select class="form-control" id="filters">
+					<option value="contains">Contains</option>
+					<option value="case">Case senstive</option>
+					<option value="word">Whole word</option>
+					<option value="starts">Starts with</option>
+					<option value="ends">Ends with</option>
+				</select>
+		
+				<button class="btn btn-primary btn_controls" id="find_next">Find Next</button>
+				<button class="btn btn-primary btn_controls" id="find_prev">Find Prev</button>
+			</div>
+			
+		</div>
+		
+		<div class="replace_div box">
+			<input class="form-control" placeholder="Replace with..." type="search" id="substitute">
+			<div class="controls">
+				<button class="btn btn-primary btn_controls" id="replace">Replace</button>
+				<button class="btn btn-primary btn_controls" id="replace_all">Replace All</button>
+				<button class="btn btn-primary btn_controls" id="analyse" data-toggle="modal" data-target="#exampleModal">Analyse</button>
+			</div>
+		</div>
+		
+	</div>
+
+	<!--Analysis Modal-->
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<table class="detailed_analysis">
+			<thead>
+        		<tr>
+        			<th>SN</th>
+        			<th>Words</th>
+        			<th>Frequency</th>
+        		</tr>
+        	</thead>
+        	<tbody></tbody>
+      	</table>
+        <table class="simple_analysis">
+        	<!-- <thead>
+        		<tr>
+        			<th>Property</th>
+        			<th>Amount</th>
+        		</tr>
+        	</thead> -->
+        	<tbody>
+        		<tr>
+        			<td>Word (Count)</td>
+        			<td></td>
+        		</tr>
+        		<tr>
+        			<td>Word (Most Occurrences)</td>
+        			<td></td>
+        		</tr>
+        		<tr>
+        			<td>Word (Longest)</td>
+        			<td></td>
+        		</tr>
+        		<tr>
+        			<td>Characters (Non-space)</td>
+        			<td></td>
+        		</tr>
+        		<tr>
+        			<td>Characters (Space)</td>
+        			<td></td>
+        		</tr>
+        		<tr>
+        			<td>Characters (Total)</td>
+        			<td></td>
+        		</tr>
+        		
+        	</tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+      	<select class="form-control" style="width:35%" id="sort">
+      		<option selected >Sort...</option>
+        	<option value="string-asc">A to Z</option>
+        	<option value="string-desc">Z to A</option>
+        	<option value="number-desc">By Frequency</option>
+        	<option value="number-desc-true">By Length</option>
+        </select>
+        <button type="button" class="btn btn-primary" id="see_more">See More</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End of Modal -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+	<script src="app.js"></script>
+</body>
+</html>
