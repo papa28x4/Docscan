@@ -93,6 +93,7 @@ let map;
 				left.textContent = `${findIndex%length + 1} of ${length} matches`;
 				// console.log(`${findIndex%length + 1} of ${length} matches`);
 				highlight[findIndex%length].classList.add('active-find');
+				// highlight[findIndex%length].focus();
 			}
 		}
 
@@ -306,24 +307,18 @@ let map;
 		})
 
 /*
-		1 match or 2 matches
+		Todo List
 
-		placeholder for contentEditable
+		placeholder for Clipboard
 
 		refactor analyse code
 
 		using the tab key to navigate
 
+		Bring to focus the highlight search word
+
 		put links to images in my github read me
-*/
 
-/* Given a string of words, you need to find the highest scoring word. Each letter of a word scores
-points according to its position in the alphabet: a = 1, b = 2, c = 3 etc. You need to return the
-highest scoring word as a string. If two words score the same, return the word that appears earliest
-in the original string. All letters will be lowercase and all inputs will be valid. Sample Tests
-console.log(highest('man i need a taxi up to ubud')); //taxi console.log(highest('what time are we
-climbing up the volcano'));//volcano console.log(highest('take me to semynak')); //semynak
-console.log(highest('bead came to the zoo')); //zoo console.log(highest('numbers and letters are
-valid inputs')); //letters
 
 */
+
