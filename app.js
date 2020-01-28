@@ -93,7 +93,8 @@ let map;
 				left.textContent = `${findIndex%length + 1} of ${length} matches`;
 				// console.log(`${findIndex%length + 1} of ${length} matches`);
 				highlight[findIndex%length].classList.add('active-find');
-				// highlight[findIndex%length].focus();
+				highlight[findIndex%length].tabIndex = "3";
+				highlight[findIndex%length].focus();
 			}
 		}
 
@@ -287,7 +288,7 @@ let map;
 				let pattern;
 				
 				if(html.includes("active-find")){
-					pattern = new RegExp(`\(\?\<\=\\bactive-find">\)${value}`, 'i')
+					pattern = new RegExp(`\(\?\<\=\\bactive-find" tabindex="3">\)${value}`, 'i')
 				}else{
 					pattern = new RegExp(`${value}`, 'i') 
 				}		
