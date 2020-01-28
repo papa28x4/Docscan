@@ -54,10 +54,10 @@ let map;
 				let length = document.querySelectorAll('.hl').length;
 				if(length > 0){
 					left.textContent = (length === 1)?  `1 of ${length} match` :  `1 of ${length} matches`;
-					// console.log(`1 of ${length} matches`)
+					
 				}else{
 					left.textContent = `unable to find ${value}`;
-					// console.log(`unable to find ${value}`)
+					
 				}
 			}else{
 				clipboard.innerHTML = text;
@@ -91,7 +91,7 @@ let map;
 				
 				highlight.forEach(elem => elem.classList.remove('active-find'));
 				left.textContent = `${findIndex%length + 1} of ${length} matches`;
-				// console.log(`${findIndex%length + 1} of ${length} matches`);
+				
 				highlight[findIndex%length].classList.add('active-find');
 				highlight[findIndex%length].tabIndex = "3";
 				highlight[findIndex%length].focus();
@@ -192,7 +192,6 @@ let map;
 			}
 			else if(e.target.id === "clipboard"){
 				characterCount()
-
 			}
 
 		})
@@ -299,6 +298,7 @@ let map;
 				
 				clipboard.innerHTML = html.replace(pattern, sub);
 				characterCount();
+				findmatches(e)
 			}
 
 			else if(e.target.id === "replace_all"){
@@ -308,6 +308,7 @@ let map;
 				let pattern = new RegExp(`${value}`, 'gi') 
 				clipboard.innerHTML = html.replace(pattern, sub);
 				characterCount();
+				left.textContent = "Replace All Completed"
 			}
 		})
 
@@ -315,6 +316,7 @@ let map;
 		
 
 		Todo List
+
 
 		refactor analyse code
 
