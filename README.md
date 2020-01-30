@@ -1,6 +1,6 @@
 # Docscan App
 
-## Built with vanilla JS. I seized this opportunity to put my newfound understanding of Regex to good use. 
+## Built with vanilla JS. I seized the opportunity to put my newfound understanding of Regex to good use. 
 
 ### Features
  * Get word and character counts
