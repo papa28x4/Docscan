@@ -4,7 +4,7 @@
 
 ### Features
  * Get word and character counts
- * Get individual words sorted alphabetically, by number of occurence or by word length
+ * Get individual words sorted alphabetically, by number of occurrence or by word length
  * Find words using different search criteria
  * Replace search terms
 
