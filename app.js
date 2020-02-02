@@ -100,7 +100,7 @@ let map;
 
 		function characterCount(){
 
-			let length = clipboard.textContent.length;
+			let length = clipboard.textContent.trim().length;
 			right.textContent =  length === 1? `${length} character` : `${length} characters`;
 			if(length === 0){
 				left.textContent = "";
@@ -323,6 +323,10 @@ let map;
 		using the tab key to navigate
 
 		put links to images in my github read me
+
+		Put some control on file input
+
+		replace, replace all, find next/prev when clipboard blank
 
 
 */
