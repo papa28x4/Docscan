@@ -72,6 +72,7 @@ let map;
 			
 			if(value === ''){
 				findIndex = 0;
+				alert("You have no text. Put some text")
 			}else{
 				let highlight = document.querySelectorAll('.hl')
 				let length = highlight.length;
@@ -166,7 +167,7 @@ let map;
 			return [newObj, Object.keys(newObj)[0], Object.values(newObj)[0], Object.keys(newObj)[0].length];
 		}
 
-		 const loadTable=(words, tableBody)=>{
+		function loadTable(words, tableBody){
             
             let sn = 1
             let dataHTML = '';
@@ -182,6 +183,13 @@ let map;
             tableBody.innerHTML = dataHTML;
         }
        
+       function checkForContent(len){
+			if(len === 0){
+				alert("You have no text content")
+				return false
+			}
+			return true;
+		}
 
 
 ////////////////////////////Event Listeners//////////////////////////////////////////////////////////////////
@@ -229,7 +237,14 @@ let map;
 			e.stopPropagation();
 			clipboard.classList.remove('active');
 			let file = e.dataTransfer.files[0];
-			displayContent(file);	
+			console.log(file.type)
+			let regex = /^text[/].*/
+			if(regex.test(file.type)){
+				displayContent(file);	
+			}else{
+				alert('Please text files only e.g. Notepad files')
+			}
+			
 			return false
 			
 		}, false)
@@ -238,29 +253,32 @@ let map;
 			if(e.target.id === "analyse"){
 				let text = clipboard.textContent;
 				text = text.trim();
-				let length = text.length;
-				let words = text.split(' ').length;
-				let char_non_space = text.replace(/\s/g, '').length;
-				let char_space = length - char_non_space;
-				const simple_analysis = document.querySelectorAll('.simple_analysis tbody td')
-				const see_more = document.querySelector('#see_more') 
-				map = groupWords(text);
+				length = text.length;
 				
-				// console.log(length, words, char_non_space, char_space, map)
-				
-				tableBody.parentElement.classList.remove('show');
-				sort.classList.remove('show');
-				sort.selectedIndex = 0;
-				see_more.textContent = "See More";
-				let mode = reorder(map,'number', 'desc');
-				let longestWord = reorder(map,'number', 'desc', true);
+				let content = checkForContent(length);
+				if(content){
+					let words = text.split(' ').length;
+					let char_non_space = text.replace(/\s/g, '').length;
+					let char_space = length - char_non_space;
+					const simple_analysis = document.querySelectorAll('.simple_analysis tbody td')
+					const see_more = document.querySelector('#see_more') 
+					map = groupWords(text);
+					
+					tableBody.parentElement.classList.remove('show');
+					sort.classList.remove('show');
+					sort.selectedIndex = 0;
+					see_more.textContent = "See More";
+					let mode = reorder(map,'number', 'desc');
+					let longestWord = reorder(map,'number', 'desc', true);
 
-				simple_analysis[1].textContent = words;
-				simple_analysis[3].textContent = `${mode[1]} (${mode[2]})`;
-				simple_analysis[5].textContent = `${longestWord[1]} (${longestWord[3]})`;
-				simple_analysis[7].textContent = char_non_space;
-				simple_analysis[9].textContent = char_space;
-				simple_analysis[11].textContent = length;
+					simple_analysis[1].textContent = words;
+					simple_analysis[3].textContent = `${mode[1]} (${mode[2]})`;
+					simple_analysis[5].textContent = `${longestWord[1]} (${longestWord[3]})`;
+					simple_analysis[7].textContent = char_non_space;
+					simple_analysis[9].textContent = char_space;
+					simple_analysis[11].textContent = length;
+				}
+				
 			}
 
 			else if(e.target.id === "see_more"){
@@ -286,31 +304,43 @@ let map;
 
 			else if(e.target.id === "replace"){
 				let html = clipboard.innerHTML;
-				let value = keyword.value;
-				let sub = substitute.value;
-				let pattern;
+			
+				if(checkForContent(html.length)){
+					let value = keyword.value;
+					let sub = substitute.value;
+					let pattern;
+					
+					if(html.includes("active-find")){
+						pattern = new RegExp(`\(\?\<\=\\bactive-find" tabindex="3">\)${value}`, 'i')
+						
+					}else{
+						pattern = new RegExp(`${value}`, 'i') 
+						
+					}		
+					
+					clipboard.innerHTML = html.replace(pattern, sub);
+					characterCount();
+					findmatches(e);
+				}
 				
-				if(html.includes("active-find")){
-					pattern = new RegExp(`\(\?\<\=\\bactive-find" tabindex="3">\)${value}`, 'i')
-				}else{
-					pattern = new RegExp(`${value}`, 'i') 
-				}		
-				
-				clipboard.innerHTML = html.replace(pattern, sub);
-				characterCount();
-				findmatches(e)
 			}
 
 			else if(e.target.id === "replace_all"){
 				let html = clipboard.innerHTML;
-				let value = keyword.value;
-				let sub = substitute.value;
-				let pattern = new RegExp(`${value}`, 'gi') 
-				clipboard.innerHTML = html.replace(pattern, sub);
-				characterCount();
-				left.textContent = "Replace All Completed"
+				
+				if(checkForContent(html.length)){
+					let value = keyword.value;
+					let sub = substitute.value;
+					let pattern = new RegExp(`${value}`, 'gi') 
+					clipboard.innerHTML = html.replace(pattern, sub);
+					characterCount();
+					left.textContent = "Replace All Completed";
+				}
 			}
 		})
+
+
+
 
 /*
 		
@@ -321,13 +351,7 @@ let map;
 		refactor analyse code
 
 		using the tab key to navigate
-
-		put links to images in my github read me
-
-		Put some control on file input
-
-		replace, replace all, find next/prev when clipboard blank
-
+		
 
 */
 
