@@ -108,7 +108,6 @@ div.controls{
 	font-size: 0.82rem;
 }
 
-
 .detailed_analysis{
 	display: none;
 }
@@ -125,7 +124,6 @@ div.controls{
 .detailed_analysis.show ~ .simple_analysis{
 	display: none;
 }
-
 
 .simple_analysis tr td:nth-child(1){
 	font-weight: bold;

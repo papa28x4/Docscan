@@ -342,16 +342,3 @@ let map;
 
 
 
-/*
-		
-
-		Todo List
-
-
-		refactor analyse code
-
-		using the tab key to navigate
-		
-
-*/
-
