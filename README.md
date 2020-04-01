@@ -8,4 +8,4 @@
  * Find words using different search criteria
  * Replace a search term
 
-![alt text](https://i.ibb.co/hKJTc16/Docscan-3.png "Sneek Preview")
+![Sneak Preview](https://i.ibb.co/hKJTc16/Docscan-3.png)
